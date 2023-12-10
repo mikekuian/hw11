@@ -76,6 +76,12 @@ class Record:
                 return
         raise ValueError("Phone number not found")
 
+    def find_phone(self, phone):
+        for p in self.phones:
+            if p.value == phone:
+                return p
+        return None
+
     def __str__(self):
         phones_str = '; '.join(str(phone) for phone in self.phones)
         return f"Name: {self.name.value}, Phones: {phones_str}, Birthday: {self.birthday}"

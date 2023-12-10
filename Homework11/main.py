@@ -41,6 +41,15 @@ class Birthday(Field):
         else:
             self.value = None
 
+    @property
+    def value(self):
+        return self._value
+
+    @value.setter
+    def value(self, new_value):
+        new_value = self.validate_birthday(new_value)
+        self._value = new_value
+
     @staticmethod
     def validate_birthday(value):
         try:
@@ -114,4 +123,3 @@ class AddressBook(UserDict):
         records = list(self.data.values())
         for i in range(0, len(records), N):
             yield records[i:i + N]
-
